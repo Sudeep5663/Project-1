@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Searching Interface</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="Assets/Images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="Assets/Images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="Assets/Images/favicon-16x16.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="search_container">
+      <div class="dropdown">
+        <div class="select">
+          <span class="Selected">Everthing</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <ul class="menu">
+          <li class="menu_list">
+            <span class="list">Everthing</span>
+          </li>
+          <li class="menu_list">
+            <span class="list">Software deveopment</span>
+          </li>
+          <li class="menu_list">
+            <span class="list">Web development</span>
+          </li>
+          <li class="menu_list">
+            <span class="list">Data Analyst</span>
+          </li>
+          <li class="menu_list">
+            <span class="list">IT Consultent</span>
+          </li>
+          <li class="menu_list">
+            <span class="list">Network adinistrator</span>
+          </li>
+        </ul>
+      </div>
+      <div class="search_box">
+        <input
+          type="text"
+          id="search_box_input"
+          placeholder="Search Anything..."
+        />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+    <script>
+      let Option = document.querySelector(".dropdown"),
+        Select = Option.querySelector(".select"),
+        selected = Option.querySelector(".Selected"),
+        menulist = Option.querySelectorAll(".menu_list"),
+        Box = document.querySelector(".search_box");
+        Input = document.querySelector("#search_box_input");
+
+    Select.addEventListener("click", () => Option.classList.toggle("active"));
+      menulist.forEach((element) => {
+        element.addEventListener("click", () => {
+          let selected_option = element.querySelector(".list").innerText;
+          selected.innerText = selected_option;
+          Input.placeholder = "Search in " + selected_option + "...";
+          Option.classList.remove("active");
+        });
+      });
+    </script>
+  </body>
+</html>
